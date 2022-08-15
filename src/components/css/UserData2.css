@@ -1,0 +1,24 @@
+.carddata2{
+    width: 50rem;
+    margin-left: 240px;
+    margin-top: 20px;
+   
+}
+.cd2{
+    height: 700px;
+    width: 100%;
+    background-color:white
+}
+
+.ud2btn{
+    width: 100%;
+    
+}
+.text2{
+    color:white;
+}
+.udiimg{
+    height :180px;
+    width: 100%;
+    border-radius: 10px;
+}

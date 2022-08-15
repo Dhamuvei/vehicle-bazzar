@@ -1,0 +1,60 @@
+.creat-acc2-card {
+  width: 100%;
+  margin-left: 450px;
+  margin-top: 50px;
+  border-radius: 30px;
+  border: 2px solid;
+  background-color: rgb(236, 236, 236);
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: hidden;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.creat-acc2-card :hover {
+  cursor: pointer;
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
+.creat-acc2-lable {
+  font-family: "Teko", sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+.creat-acc-icon2 {
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+}
+.form-header-crearAcc2 {
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+#content2 {
+  display: flex;
+  font-size: 15px;
+}
+#FcRefresh {
+  font-size: 30px;
+}
+.create-account2 {
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #5791ff;
+  border: none;
+  color: white;
+  margin-left: 25px;
+  width: 60%;
+  letter-spacing: 2px;
+}

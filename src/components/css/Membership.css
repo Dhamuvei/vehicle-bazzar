@@ -1,0 +1,98 @@
+/* body {
+    background-color:white;
+  }
+   */
+  .mwrapper {
+    margin: 10vh;
+  }
+  
+  .memcard {
+    border: none;
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    border-radius: 20px;
+    min-height: 450px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  }
+  @media (max-width: 768px) {
+    .memcard {
+      min-height: 350px;
+    }
+  }
+  @media (max-width: 420px) {
+    .memcard {
+      min-height: 300px;
+    }
+  }
+  .memcard.card-has-bg {
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .memcard.card-has-bg:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    -webkit-filter: grayscale(1);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+  .memcard.card-has-bg:hover {
+    transform: scale(0.98);
+    box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.3);
+    background-size: 130%;
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .memcard.card-has-bg:hover .card-img-overlay {
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+    background: #234f6d;
+    background: linear-gradient(0deg, rgba(4, 69, 114, 0.5) 0%, #044572 100%);
+  }
+  .memcard .memfcard {
+    background: none;
+    border-top: none;
+  }
+  .memcard .memfcard .media img {
+    border: solid 3px rgba(234, 95, 0, 0.3);
+  }
+  .memcard .card-meta {
+    color: orange;
+  }
+  .memcard .memcardbody {
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .memcard:hover {
+    cursor: pointer;
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .memcard:hover .memcardbody {
+    margin-top: 30px;
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .memcard .card-img-overlay {
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+    background: #234f6d;
+    background: linear-gradient(0deg, rgba(35, 79, 109, 0.3785889356) 0%, #455f71 100%);
+  }
+
+  .bgm1{
+    background-image:url('https://source.unsplash.com/600x900/?tech,street');
+  }
+  .bgm2{
+    background-image:url('https://source.unsplash.com/600x900/?computer,design');
+}
+.bgm3{
+    background-image:url('https://source.unsplash.com/600x900/?tree,nature');
+}
+.membership-nav{
+  margin-bottom: 50px;
+}
+
+ 

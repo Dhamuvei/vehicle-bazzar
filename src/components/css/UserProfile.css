@@ -1,0 +1,53 @@
+.proimg{
+    height: 500px;
+   
+}
+.tableheader{
+font-weight: bold; font-size: 23px
+}
+.cardprice{
+    width: 18rem; margin-bottom: 15px; margin-left: 25px
+}
+.texttag{
+    font-weight: bold
+}
+.selldata{
+    width: 18rem; margin-left: 25px;
+    
+}
+
+.sellname{
+    font-weight: bold
+}
+.btntxt{
+    width: 50%
+}
+.map{
+    margin-left: 35px;
+    width:100%;
+    margin-top: 25px;
+}
+.mapcard{
+    width: 18rem
+}
+.user-card {
+    border: none;
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    border-radius: 20px;
+   
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 0px;
+  }
+  .user-card .user-body {
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  } 
+  .user-card:hover {
+    cursor: pointer;
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  } 
+   .user-card:hover .user-body {
+    margin-top: 30px;
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+ 

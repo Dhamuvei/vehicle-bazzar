@@ -1,0 +1,17 @@
+.carosel{
+    height: 400px;
+    border-radius: 10px;
+}
+.carosel-conrainer{
+    height: 500px;
+    width: 1350px;
+    margin: 0px;
+}
+.carosel-img{
+ height: 500px;
+}
+.carosel-text{
+    
+    color: white;
+    font-size: 25px;
+}

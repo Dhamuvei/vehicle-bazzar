@@ -1,0 +1,80 @@
+
+
+.registration-form-ceatAcc{
+  padding: 50px 0;
+}
+
+.registration-form-ceatAcc form {
+  background-color: #f8f9fa;
+  max-width: 450px;
+  margin: auto;
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  border: 1px solid;
+}
+
+.registration-form-ceatAcc .item {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+   color: black;
+   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  
+}
+
+
+.registration-form-ceatAcc .create-account {
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #5791ff;
+  border: none;
+  color: white;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  letter-spacing: 2px;
+}
+
+.registration-form-ceatAcc .social-media {
+  max-width: 600px;
+  background-color: #fff;
+  margin: auto;
+  padding: 35px 0;
+  text-align: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  color: #9fadca;
+  border-top: 1px solid #dee9ff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.form-header-crearAcc {
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  
+}
+#content {
+  display: flex;
+  font-size: 15px;
+  
+  
+}
+.creat-acc-icon{
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+  
+}

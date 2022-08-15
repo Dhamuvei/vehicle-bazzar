@@ -1,0 +1,58 @@
+.login {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 29px;
+}
+
+.fg {
+  font-family: "Oswald", sans-serif;
+}
+.eorp {
+  font-size: 15px;
+  font-weight: bold;
+}
+.p {
+  font-family: "Oswald", sans-serif;
+}
+.sb {
+  display: flex;
+  justify-content: center;
+}
+.ifon{
+    display: flex; justify-content: center;
+}
+.cab{
+    display: flex; justify-content: center;
+    color: black;
+    width: 100%;
+}
+.icon{
+    display:flex;
+}
+#forgetpassword{
+    text-decoration: none;
+    display: flex;
+    justify-content: end;
+}
+.logincard {
+  border: none;
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: hidden;
+  border-radius: 20px;
+  min-height: 450px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 0px;
+}
+.logincard .loginbody {
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+} 
+.logincard:hover {
+  cursor: pointer;
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+} 
+ .logincard:hover .loginbody {
+  margin-top: 30px;
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.name{
+  background-color: aqua;
+}

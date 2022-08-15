@@ -1,0 +1,22 @@
+.otpreq-card-body{
+    font-family: 'Fira Sans Condensed', sans-serif; font-size: 29px;
+}
+
+.formgrp-otpreq{
+    font-family: 'Oswald', sans-serif;
+}
+.content otp-req{
+    font-size: small;
+}
+#otp{
+    font-size: 18px;font-weight: 600;
+}
+.otp-btn{
+    display: flex; justify-content: center;
+}
+.resend-otp{
+    font-size: 15px;display: flex;justify-content: center; text-decoration: none;
+}
+.content2-otp-req{
+    font-size: 15px;
+}

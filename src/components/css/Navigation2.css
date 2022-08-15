@@ -1,0 +1,12 @@
+.nav2-logo{
+    width: 100px; height: 50px;
+}
+.nav2-title{
+    font-family: 'Rubik Bubbles', cursive; letter-spacing: 1px;
+    
+    color: black;
+}
+
+.nav2-link{ 
+    text-decoration: none;
+}

@@ -1,0 +1,135 @@
+.main-page-color{
+  background-color: #c8c2c2;
+}
+.a-box {
+  display: inline-block;
+  width: 240px;
+  text-align: center;
+}
+
+.img-container {
+  height: 230px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 0px 0px 20px 20px;
+  display: inline-block;
+}
+
+.img-container img {
+  transform: skew(0deg, -13deg);
+  height: 250px;
+  margin: -35px 0px 0px -70px;
+}
+
+.inner-skew {
+  display: inline-block;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0px;
+  transform: skew(0deg, 13deg);
+  font-size: 0px;
+  margin: 30px 0px 0px 0px;
+  background: #c8c2c2;
+  height: 250px;
+  width: 200px;
+}
+
+.text-container {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  padding: 120px 20px 20px 20px;
+  border-radius: 20px;
+  background: #fff;
+  margin: -120px 0px 0px 0px;
+  line-height: 19px;
+  font-size: 14px;
+}
+
+.text-container h3 {
+  margin: 20px 0px 10px 0px;
+  color: #04bcff;
+  font-size: 18px;
+}
+
+/* search bar */
+
+
+
+.domain-search {
+margin-top: 0px;
+  padding:100px 0;
+  padding-top: 10px;
+  width: 1300px;
+  margin-left: 20px;
+}
+
+
+.bg-pblue {
+  /* background-color: #2d3134; */
+  height: 30px;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+.domain-search .form-title {
+  margin-top: 0;
+  margin-bottom: 2px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+}
+
+.domain-search p {
+  color: #B0E7FF;
+  /* margin: 0; */
+}
+
+.domain-search .input-group {
+  width: 50%;
+  border-radius: 10px;
+  height: 50px;
+}
+
+
+.domain-search .input-group-addon {
+  border: none;
+}
+
+.domain-search .form-title strong {
+  display: block;
+}
+
+.domain-search .form-control {
+  height: 60px;
+  border-radius: 0;
+  border: none;
+}
+
+
+.domain-search .input-group + p {
+  color: #fff;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.domain-search .input-group + p strong {
+  margin-right: 40px;
+}
+.price{
+  margin: 20px 0px 10px 0px;
+  color: #04bcff;
+  font-size: 18px;
+}
+.km{
+  margin: 20px 0px 10px 0px;
+  color: #ff3604;
+  font-size: 15px;
+}
+.model{
+  margin: 20px 0px 10px 0px;
+  color:black;
+  font-weight:bolder;
+  font-size: 15px;
+}

@@ -1,0 +1,35 @@
+.nav {
+  border-radius: 5px;
+}
+
+.title {
+    
+  font-family: "Kdam Thmor Pro", sans-serif;
+  letter-spacing: 3px;
+  font-size: 35px;
+  color: white;
+}
+.form-select {
+  width: 15%;
+  margin-left: 25px;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+#contactus {
+  margin-left: 490px;
+  height: 35px;
+  letter-spacing: 2px;
+}
+#sellbike {
+  width: 150px;
+  height: 35px;
+  margin-left: 25px;
+  margin-right: 10px;
+  letter-spacing: 2px;
+}
+.profilebtn {
+  height: 35px;
+  margin-left: 10px;
+  width: 100%;
+  letter-spacing: 2px;
+}

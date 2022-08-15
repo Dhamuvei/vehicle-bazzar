@@ -6,7 +6,6 @@ import Navigation from "../components/Navigation2";
 import "../components/css/img.css";
 import "../components/css/UserData2.css";
 import { Link } from "react-router-dom";
-import imageToBase64 from 'image-to-base64/browser'
 
 function UserData1() {
 
@@ -38,10 +37,7 @@ const [user, setuser] = useState({
   addres: "",
 });
 
-let base64code = ""
-
   const onLoad = fileString => {
-    console.log("byaj","string",fileString);
     let myImages = [];
     if (user.PhotoSelected != []) {
       myImages = user.PhotoSelected.concat(fileString);
@@ -52,7 +48,6 @@ let base64code = ""
   };
  
   const getBase64 = file => {
-    console.log("byaj","file",file);
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
@@ -62,7 +57,6 @@ let base64code = ""
 
 useEffect(() => {
   setuser({ ...user, userId: parseJwt(AuthToken)._id });
-  console.log('parseJwt(AuthToken)._id',parseJwt(AuthToken)._id);
 },[]);
 
   function parseJwt(token) {
@@ -78,12 +72,8 @@ useEffect(() => {
     return JSON.parse(base64);
   }
 
-  console.log('console in main file');
   
-
-   
-  const onSelectFile = (event) => {
-    console.log('byaj',event.target.files, Array.from(event.target.files));
+  const  onSelectFile = (event) => {
     const selectedFiles = event.target.files;
     const selectedFilesArray = Array.from(selectedFiles);
 
@@ -98,7 +88,6 @@ useEffect(() => {
   function deleteHandler(image) {
     let deleteImages = [];
     deleteImages = user.PhotoSelected.filter((e) => e !== image);
-    console.log("deleteImages", deleteImages);
     setuser({ ...user, PhotoSelected: deleteImages });
     // setSelectedImages(selectedImages.filter((e) => e !== image));
     URL.revokeObjectURL(image);
@@ -125,11 +114,7 @@ useEffect(() => {
 
   if (!AuthToken) {
     window.alert("Need to Login");
-    return (
-      <>
-        <Navigation />
-      </>
-    );
+    window.location="/Login"
   } else {
     return (
       <>
@@ -383,45 +368,44 @@ useEffect(() => {
                     </div>
 
                     <div>
-                      <br />
-                      <label className="label-img">
-                        <i class="fa-solid fa-camera-retro fa-fade"></i>
+                      {
+                        ((user.PhotoSelected.length <= 4) || (user.PhotoSelected == null || undefined)) &&
+                        <div>
                         <br />
-                        Add
-                        <span>up to 5 images</span>
-                        <input
-                          type="file"
-                          name="images"
-                          onChange={onSelectFile}
-                          multiple
-                          accept="image/png , image/jpeg, image/webp, image/pdf"
-                        />
-                      </label>
-
-                      <br />
-                      <br />
-
-                      <input type="file" multiple />
-
+                        <label className="label-img">
+                          <i class="fa-solid fa-camera-retro fa-fade"></i>
+                          <br />
+                          Add
+                          <span>up to 5 images</span>
+                          <input
+                            type="file"
+                            name="images"
+                            onChange={onSelectFile}
+                            multiple
+                            accept="image/png , image/jpeg, image/webp, image/pdf"
+                          />
+                        </label>
+  
+                        <br />
+                        <br />
+  
+                        <input type="file" multiple />
+                        </div>
+                      }
                       {user.PhotoSelected.length > 0 &&
-                        (user.PhotoSelected.length > 5 ? (
-                          <p className="error">
-                            You can't upload more than 5 images! <br />
-                            <span>
-                              please delete{" "}
-                              <b> {user.PhotoSelected.length - 5} </b> of them{" "}
-                            </span>
-                          </p>
-                        ) : (
+                        (user.PhotoSelected.length <= 4 ? (
                           <button
-                            className=" btn btn-outline-success upload-btn"
-                            onClick={() => {
-                              console.log("images", user.PhotoSelected);
-                            }}
-                          >
-                            UPLOAD {user.PhotoSelected.length} IMAGE
-                            {user.PhotoSelected.length === 1 ? "" : "S"}
-                          </button>
+                          className=" btn btn-outline-success upload-btn"
+                          onClick={() => {
+                            console.log("images", user.PhotoSelected);
+                          }}
+                        >
+                          {user.PhotoSelected.length} Image's Added.
+                        </button>
+                        ) : (
+                          <p className="">
+                           {user.PhotoSelected.length} Images added successfully. Try deleting an image to upload any other image
+                          </p>
                         ))}
 
                       <div className="images">
@@ -430,10 +414,10 @@ useEffect(() => {
                             return (
                               <div key={image} className="image">
                                 <img src={image} height="200" alt="upload" />
-                                {console.log("byaj","image",image)}
                                 <button
                                   className="btn btn-outline-danger"
-                                  onClick={() => deleteHandler(image)}
+                                  onClick={() => {
+                                    deleteHandler(image)}}
                                 >
                                   delete image
                                 </button>

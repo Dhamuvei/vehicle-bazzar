@@ -16,8 +16,8 @@ function Vehiclecard(props) {
               <div class="img-inner">
                 <div class="inner-skew">
                   <img
-                  alt="Loaging..."
-                    src="blob:http://localhost:3000/5b37dc0b-0b8c-4dfa-99a6-b38f0c43d9f8"
+                  alt="Loading..."
+                    src={props.PhotoSelected}
                     onClick={() => navigate("/UserView/" +props._id)}
                   />
                 </div>

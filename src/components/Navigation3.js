@@ -7,8 +7,8 @@ function Navigation2(){
         <>
             <div className="container">
             <nav class="navbar navbar-expand-lg navbar-light ">
-                    <a class="navbar-brand" href="./MainPage.html">
-                        <img className="nav2-logo" src="../image/logo (1).ico"/></a>
+                    {/* <a class="navbar-brand" href="./MainPage.html">
+                        <img className="nav2-logo" src="../image/logo (1).ico"/></a> */}
                     <Link to="/MainPage" className="nav2-link">
                         <h2 className="nav2-title">vehicle bazzar</h2>
                     </Link>
@@ -20,7 +20,7 @@ function Navigation2(){
                     <p></p>
                     <div class="collapse navbar-collapse justify-content-end " id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <Link class="nav-link active" to="/Mainpage"><button className="btn btn-outline-primary">Home</button></Link>{" "}
+                            <Link class="nav-link active" to="/Mainpage"><button className="btn btn-warning">Home</button></Link>{" "}
                         </div>
                     </div>
                 </nav>

@@ -17,20 +17,21 @@ function Vehiclecard(props) {
                 <div class="inner-skew">
                   <img
                   alt="Loading..."
+                
                     src={props.PhotoSelected}
-                    onClick={() => navigate("/UserView/" +props._id)}
+                    onClick={() => window.location.href="/UserView/" +props._id}
                   />
                 </div>
               </div>
           </div>
           <div class="text-container">
-            <h3>Bike Bazzar</h3>
             <div>
+              <p className="model">Seller: {props.YourName}</p>
               <p className="model">{props.BikeBrand}</p>
-              <p className="km">KM-Driven:{props.KillometerDriven}</p>
-              <p className="price">prize ₹ {props.SellinPrice}</p>
+              <p className="model">{props.BikeYear} :Model</p>
+              <p className="model">prize ₹ {props.SellinPrice}</p>
             </div>
-            <button className="btn btn-warning" onClick={() => navigate("/UserView/" +props._id)}>click to view</button>
+            {/* <button className="btn btn-warning" onClick={() => navigate("/UserView/" +props._id)}>click to view</button> */}
           </div>
         </div>
       </div>

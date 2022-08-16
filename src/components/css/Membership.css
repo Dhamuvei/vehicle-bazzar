@@ -1,7 +1,4 @@
-/* body {
-    background-color:white;
-  }
-   */
+
   .mwrapper {
     margin: 10vh;
   }
@@ -95,4 +92,15 @@
   margin-bottom: 50px;
 }
 
+.mem_card{
+  margin-right: 500px;
+}
+.mem-title{
+  justify-content: center;
+}
+.mem-bg{
+  background-image:url(https://res.allmacwallpaper.com/get/Retina-MacBook-Pro-15-inch-wallpapers/Bike-Chase-2880x1800/175-8.jpg);
+background-size: cover;
+height: 657px;
+}
  

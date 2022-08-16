@@ -82,7 +82,7 @@ function CreateAccount(props) {
             <hr />
             <p className="forgot-password text-right">
               Alredy have an account..move
-              <Link to="/Login2">Login</Link>
+              <Link to="/Login">Login</Link>
             </p>
           </div>
         </form>

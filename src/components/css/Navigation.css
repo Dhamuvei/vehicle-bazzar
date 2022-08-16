@@ -16,20 +16,20 @@
   font-size: 20px;
 }
 #contactus {
-  margin-left: 490px;
-  height: 35px;
+  /* margin-left: 490px;
+  height: 35px; */
   letter-spacing: 2px;
 }
 #sellbike {
   width: 150px;
   height: 35px;
   margin-left: 25px;
-  margin-right: 10px;
+  margin-right: 15px;
   letter-spacing: 2px;
 }
 .profilebtn {
   height: 35px;
-  margin-left: 10px;
-  width: 100%;
+  margin-left: 650px;
+  /* width: 100%; */
   letter-spacing: 2px;
 }

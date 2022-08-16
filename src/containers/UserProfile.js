@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../components/css/UserProfile.css";
-import Navbar from "../components/Navbar3";
-import { Link, useNavigate } from "react-router-dom";
-import Login from "./Login";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar3 from "../components/Navbar3";
+import { Link } from "react-router-dom";
+import MapContainer from "../components/GoogleMap";
 
 function UserProfile(props) {
   //authToken
@@ -38,7 +38,7 @@ function UserProfile(props) {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
-        `http://localhost:2580/UserData1//userId/${userId}`
+        `http://localhost:2580/UserData1/userId/${userId}`
       );
       setData(data);
 
@@ -48,11 +48,22 @@ function UserProfile(props) {
       console.log(error.message);
     }
   };
+  //dlelte user data
+  
+    const DeleteUser = async ({ _id }) => {
+      if (window.confirm(`Are You Sure Delete This order`)) {
+        try {
+          await axios.delete(`http://localhost:2580/UserData1/delete/${_id}`);
+          alert("Deleted Successfully")
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+    };
 
   // useEffect use refresh data
   useEffect(() => {
     userDataById();
-    // deleteUserId()
   }, [userId]);
 
   //navigate
@@ -60,16 +71,13 @@ function UserProfile(props) {
 
   const logout = () => {
     localStorage.clear("authoraization");
+   
     Navigate("/Mainpage");
+    window.alert("Logged out SuccessFully")
 
   };
 
-  if (!AuthToken) {
-    window.alert("Need to Login")
-          window.location="/Login"
 
-
-  } else {
     return (
       <>
         <div class="container">
@@ -90,27 +98,11 @@ function UserProfile(props) {
                 data-bs-ride="carousel"
               >
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="../image/20.jpg"
-                      class="d-block w-100 proimg"
-                      alt="..."
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="../image/20.jpg"
-                      class="d-block w-100 proimg"
-                      alt="..."
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="../image/20.jpg"
-                      class="d-block w-100 proimg"
-                      alt="..."
-                    />
-                  </div>
+                {data.PhotoSelected && data.PhotoSelected.map((src)=>{
+                  return(                  <div class="carousel-item active">
+                  <img src={src} class="d-block w-100 proimg" />
+                  </div>);
+              })}          
                 </div>
                 <button
                   class="carousel-control-prev"
@@ -147,17 +139,20 @@ function UserProfile(props) {
                         <th scope="col">Brand</th>
                         <th scope="col">Year</th>
                         <th scope="col">Model</th>
+                        <th scope="col">Registration Number</th>
+
                         <th scope="col">KM Driven</th>
                         <th scope="col">Woner</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">Bajaj{data.BikeBrand}</th>
-                        <td>2021{data.BikeYear}</td>
-                        <td>Pulser Twin Disc{data.BikeModel}</td>
-                        <td>{data.EmailId}</td>
-                        <td>Single{data.OwnerStatus}</td>
+                        <th scope="row">{data.BikeBrand}</th>
+                        <td>{data.BikeYear}</td>
+                        <td>{data.BikeModel}</td>
+                        <td>{data.RegistrationNumber}</td>
+                        <td>{data.KillometerDriven}</td>
+                        <td>{data.OwnerStatus}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -195,13 +190,11 @@ function UserProfile(props) {
 
               <div class="col-lg-3 col-md-2 col-xs-12 map">
                 <div class="card user-card">
-                  <img
-                    class="card-img-top"
-                    src="../image/map.png"
-                    alt="Card image cap"
-                  />
+                  
+                  <MapContainer lat={data.Latitude} lng={data.Longitude} />
                   <div class="card-body user-body">
                     <p class="card-text">{data.addres}</p>
+                    
                   </div>
                 </div>
               </div>
@@ -214,7 +207,7 @@ function UserProfile(props) {
 
                     <p class="card-text sellname">Just Click It....🏍</p>
 
-                    <button class="btn btn-danger ml-5">
+                    <button class="btn btn-danger ml-5" onClick={() => DeleteUser(data)}>
                       Delet My Account⚡
                     </button>
                   </div>
@@ -226,5 +219,5 @@ function UserProfile(props) {
       </>
     );
   }
-}
+
 export default UserProfile;

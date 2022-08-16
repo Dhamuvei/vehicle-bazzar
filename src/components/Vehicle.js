@@ -84,7 +84,9 @@ function Vehicle() {
                    PhotoSelected={data.PhotoSelected[0]}
                    BikeBrand={data.BikeBrand}
                    KillometerDriven={data.KillometerDriven}
-                   SellinPrice={data.SellinPrice} />
+                   SellinPrice={data.SellinPrice}
+                   BikeYear={data.BikeYear}
+                   YourName={data.YourName}/>
                 ))}
                 
             </div>

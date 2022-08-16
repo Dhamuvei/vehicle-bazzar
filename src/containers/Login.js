@@ -24,10 +24,10 @@ function Login(props) {
     })
   };
   return (
-    <div>
+    <div className=" container-fluid log-bg">
           <Navigation/>
 
-      <div className="registration-form-ceatAcc">
+      <div className="registration-form-ceatAcc ">
         <form onSubmit={handleSubmit(onSubmit)}>
         <div className="creat-acc-icon"><FaUsers/></div>
 
@@ -66,7 +66,7 @@ function Login(props) {
             <hr />
             <p className="forgot-password text-right">
               New user need to
-               <Link to="/CreateAccount">CreateAccount</Link>
+               <Link to="/CreaAcc2">CreateAccount</Link>
             </p>
           </div>
         </form>

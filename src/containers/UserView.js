@@ -4,6 +4,8 @@ import Navigation from "../components/Navigation3";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import MapContainer from "../components/GoogleMap";
+
 
 function UserProfile() {
   const { id } = useParams();
@@ -46,28 +48,13 @@ function UserProfile() {
               class="carousel slide carousel-fade"
               data-bs-ride="carousel"
             >
+                    {console.log("byaj",data,"data")}
               <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    src="../image/20.jpg"
-                    class="d-block w-100 proimg"
-                    alt="..."
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="../image/20.jpg"
-                    class="d-block w-100 proimg"
-                    alt="..."
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="../image/20.jpg"
-                    class="d-block w-100 proimg"
-                    alt="..."
-                  />
-                </div>
+                {data.PhotoSelected && data.PhotoSelected.map((src)=>{
+                  return(                  <div class="carousel-item active">
+                  <img src={src} class="d-block w-100 proimg" />
+                  </div>);
+              })}
               </div>
               <button
                 class="carousel-control-prev"
@@ -104,6 +91,7 @@ function UserProfile() {
                       <th scope="col">Brand</th>
                       <th scope="col">Year</th>
                       <th scope="col">Model</th>
+                      <th scope="col">Registration Number</th>
                       <th scope="col">KM Driven</th>
                       <th scope="col">Woner</th>
                     </tr>
@@ -113,6 +101,7 @@ function UserProfile() {
                       <th scope="row">{data.BikeBrand}</th>
                       <td>{data.BikeYear}</td>
                       <td>{data.BikeModel}</td>
+                      <td>{data.RegistrationNumber}</td>
                       <td>{data.KillometerDriven}</td>
                       <td>{data.OwnerStatus}</td>
                     </tr>
@@ -151,17 +140,16 @@ function UserProfile() {
             </div>
 
             <div class="col-lg-3 col-md-2 col-xs-12 map">
-              <div class="card user-card">
-                <img
-                  class="card-img-top"
-                  src="../image/map.png"
-                  alt="Card image cap"
-                />
-                <div class="card-body user-body">
-                  <p class="card-text">{data.addres}</p>
+                <div class="card user-card">
+                  
+                  <MapContainer lat={data.Latitude} lng={data.Longitude} />
+                  <div class="card-body user-body">
+                    <p class="card-text">{data.addres}</p>
+                    
+                  </div>
                 </div>
               </div>
-            </div>
+
           </div>
         </div>
       </div>

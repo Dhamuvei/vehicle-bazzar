@@ -2,7 +2,8 @@ import React from "react";
 import "../components/css/UserData1.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Navigation from "../components/Navigation2";
+import Navigation from "../components/Navigation3";
+
 import "../components/css/img.css";
 import "../components/css/UserData2.css";
 import { Link } from "react-router-dom";
@@ -103,7 +104,7 @@ useEffect(() => {
     try {
       const url = "http://localhost:2580/UserData1/post";
       const responce = await axios.post(url, user);
-      // window.location = "/UserProfile";
+      window.alert(`Account Create SuccesFully`)
       console.log(responce);
     } catch (err) {}
   };
@@ -118,10 +119,11 @@ useEffect(() => {
   } else {
     return (
       <>
-        <div>
-          <Navigation />
-        </div>
-        <div className="container-fluid  cd1">
+      
+      
+        <div className="container-fluid  cd1 udata1-bg">
+        <Navigation />
+
           <div className="row">
             <div className="col">
               <div class="card  carddata1">
@@ -375,7 +377,7 @@ useEffect(() => {
                         <label className="label-img">
                           <i class="fa-solid fa-camera-retro fa-fade"></i>
                           <br />
-                          Add
+                          Add 1 by 1
                           <span>up to 5 images</span>
                           <input
                             type="file"

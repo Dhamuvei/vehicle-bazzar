@@ -2,7 +2,7 @@ import React from "react";
 import "../components/css/UserData1.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Navigation from "../components/Navigation3";
+import Navigation from "../components/SellerNave";
 
 import "../components/css/img.css";
 import "../components/css/UserData2.css";
@@ -102,7 +102,7 @@ useEffect(() => {
   const handelsubtmit = async (evt) => {
     evt.preventDefault();
     try {
-      const url = "http://localhost:2580/UserData1/post";
+      const url = "http://localhost:2580/SellerData/post";
       const responce = await axios.post(url, user);
       window.alert(`Account Create SuccesFully`)
       console.log(responce);
@@ -434,7 +434,7 @@ useEffect(() => {
                       type="submit"
                       class="btn btn-outline-primary ud1btn "
                     >
-                      Subtmit
+                      Submit
                     </button>
                     <Link to="/UserProfile">
                       <button className="btn btn-outline-primary ud1btn">

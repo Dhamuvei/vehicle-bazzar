@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../components/css/Navigation.css";
 import { Link } from "react-router-dom";
-import Navigation from "./Navigation2";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function NavigationBar() {
   //AuthToken
@@ -23,6 +22,7 @@ function NavigationBar() {
   const logout = () => {
     window.localStorage.clear("authoraization");
     window.alert("Logged Out SuccesFully");
+    window.location.href="/";
   };
   const login = () => {
     if (!AuthToken) {
@@ -32,6 +32,52 @@ function NavigationBar() {
       // window.location = "/Mainpage";
     }
   };
+
+  const [dataCheck, setDataCheck] = useState({});
+  //api to get user data
+  const userDataById = async (userId) => {
+    try {
+      console.log(dataCheck, "dataCheck");
+      const { dataCheckResp } = await axios.get(
+        `http://localhost:2580/SellerData/userId/${userId}`
+      );
+      if (dataCheckResp) {
+        console.log("true",dataCheck, "dataCheck", dataCheckResp, "dataCheckResp");
+        setDataCheck(dataCheckResp);
+        return true;
+      }else
+      { console.log("false",dataCheck, "dataCheck", dataCheckResp, "dataCheckResp");
+      return false};
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // get userId from AuthToken
+  function parseJwt(token) {
+    var base64Url = token.split(".")[1];
+    var base64 = decodeURIComponent(
+      atob(base64Url)
+        .split("")
+        .map((c) => {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(base64);
+  }
+
+  function getUserStatus() {
+    if (!AuthToken) {
+      // window.alert("Seller Need To Login");
+      return false;
+    } else {
+      let a = parseJwt(AuthToken);
+      let userId = a._id;
+      if (userId){return userDataById(userId)}
+    }
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-dark nav">
@@ -50,26 +96,45 @@ function NavigationBar() {
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ">
-            <div>
-              <button
-                id="User"
-                class="btn btn-outline-success profilebtn"
-                onClick={navigat}
-              >
-                Seller Profile
-              </button>
-            </div>
-
-            <button
-              id="sellbike"
-              type="button"
-              className="btn btn btn-outline-warning"
-              data-bs-toggle="modal"
-              data-bs-target="#sellbike1"
-            >
-              <i className="fa-solid fa-scale-unbalanced-flip fa-flip"></i> Sell
-              Bike
-            </button>
+          <button
+                  id="User"
+                  class="btn btn-outline-success profilebtn"
+                  onClick={navigat}
+                >
+                  Seller Profile
+                </button>
+                <button
+                  id="sellbike"
+                  type="button"
+                  className="btn btn btn-outline-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#sellbike1"
+                >
+                  <i className="fa-solid fa-scale-unbalanced-flip fa-flip"></i>{" "}
+                  Sale Bike
+                </button>
+            {/* {console.log("insidehtml", getUserStatus())}
+            {AuthToken &&
+              (getUserStatus() ? (
+                <button
+                  id="User"
+                  class="btn btn-outline-success profilebtn"
+                  onClick={navigat}
+                >
+                  Seller Profile
+                </button>
+              ) : (
+                <button
+                  id="sellbike"
+                  type="button"
+                  className="btn btn btn-outline-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#sellbike1"
+                >
+                  <i className="fa-solid fa-scale-unbalanced-flip fa-flip"></i>{" "}
+                  Sale Bike
+                </button>
+              ))} */}
             <div className="modal" id="sellbike1">
               <div className="modal-dialog">
                 <div className="modal-content">
@@ -174,7 +239,7 @@ function NavigationBar() {
                           </div>
                         </div>
                       </div>
-{/* 
+                      {/* 
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingThree">
                           <button
@@ -289,7 +354,7 @@ function NavigationBar() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Login
+                Seller Login
               </button>
               <ul class="dropdown-menu">
                 <li>

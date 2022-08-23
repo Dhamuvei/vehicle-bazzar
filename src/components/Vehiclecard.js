@@ -26,10 +26,10 @@ function Vehiclecard(props) {
           </div>
           <div class="text-container">
             <div>
-              <p className="model">Seller: {props.YourName}</p>
-              <p className="model">{props.BikeBrand}</p>
-              <p className="model">{props.BikeYear} :Model</p>
-              <p className="model">prize ₹ {props.SellinPrice}</p>
+              <p style= {{fontStyle: 'italic'}}className="model">Seller: {props.YourName}</p>
+              <p style={{color: "red"}} className="model">{props.BikeBrand}</p>
+              <p style= {{fontStyle: 'italic'}} className="model">{props.BikeYear} :Model</p>
+              <p style={{color: "blue",textDecorationLine:"underline"}} className="model">prize ₹ {props.SellinPrice}</p>
             </div>
             {/* <button className="btn btn-warning" onClick={() => navigate("/UserView/" +props._id)}>click to view</button> */}
           </div>

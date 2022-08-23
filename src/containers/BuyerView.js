@@ -1,26 +1,87 @@
 import React from "react";
 import "../components/css/UserProfile.css";
-import Navigation from "../components/Navigation3";
+import Navigation from "../components/BuyerNav3";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import MapContainer from "../components/GoogleMap";
 
-
 function UserProfile() {
   const { id } = useParams();
+
   const [data, setData] = useState({});
+  const [Seller, SellerData] = useState({});
+  const [iptText, setIptText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // get product function & api call
+  //Authtoken
+  const AuthToken = localStorage.getItem("authoraization");
+
+  // get Buyer Id Form auth Token for FeedBack collection
+  function parseJwt(token) {
+    var base64Url = token.split(".")[1];
+    var base64 = decodeURIComponent(
+      atob(base64Url)
+        .split("")
+        .map((c) => {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(base64);
+  }
+  let a = parseJwt(AuthToken);
+  let BuyerId = a._id;
+
+  //Send Notification to Bike Owner
+  const Notification = async () => {
+ 
+    try {
+      const url = "http://localhost:2580/feedback/post";
+      const responce = await axios.post(url, {
+        SellerId: data.userId,
+        BuyerName: Seller.username,
+        BuyerNumber: Seller.number,
+        Byeremail: Seller.email,
+        iptText: iptText,
+      });
+      window.alert(`Notification Send to ${data.YourName}`);
+      console.log(responce);
+    } catch (err) {}
+  };
+
+  // get Buyer data by id
+
+  const getSeller = async () => {
+    setIsLoading(true);
+    try {
+      const { data } = await axios.get(
+        `http://localhost:2580/BuyerData/getById/${BuyerId}`
+      );
+      setIsLoading(false);
+      SellerData(data);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  // Post Notification To Owner   Post seller{_id}&& Post Buyer{data} in new collection
+
+  useEffect(() => {
+    getSeller();
+  }, []);
+
+  // get bike info by  
   const getBikeDataById = async () => {
     try {
       setIsLoading(true);
-      const { data } = await axios.get(`http://localhost:2580/UserData1/${id}`);
+      const { data } = await axios.get(
+        `http://localhost:2580/SellerData/${id}`
+      );
       setData(data);
+      console.log("dhamu",data);
 
       setIsLoading(false);
-      console.log(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -30,6 +91,30 @@ function UserProfile() {
   useEffect(() => {
     getBikeDataById();
   }, [id]);
+
+
+  //send mail
+  const sendMail = async () => {
+
+    try {
+      const url = "http://localhost:2580/BuyerMail/BuyerMail";
+      const responce = await axios.post(url, {
+        BuyerName: Seller.username,
+        BuyerNumber: Seller.number,
+        Byeremail: Seller.email,
+        sellerName:data.YourName,
+        sellerEmail:data.EmailId,
+        iptText: `I Would Like to Buy Ur Bike Sir`,
+      }
+
+);
+      window.alert(`Mail Send to ${data.YourName}`);
+      console.log(responce);
+    } catch (err) {}
+  };
+
+
+
   return (
     <>
       <div class="container">
@@ -48,13 +133,16 @@ function UserProfile() {
               class="carousel slide carousel-fade"
               data-bs-ride="carousel"
             >
-                    {console.log("byaj",data,"data")}
+              {console.log("byaj", data, "data")}
               <div class="carousel-inner">
-                {data.PhotoSelected && data.PhotoSelected.map((src)=>{
-                  return(                  <div class="carousel-item active">
-                  <img src={src} class="d-block w-100 proimg" />
-                  </div>);
-              })}
+                {data.PhotoSelected &&
+                  data.PhotoSelected.map((src) => {
+                    return (
+                      <div class="carousel-item active">
+                        <img src={src} class="d-block w-100 proimg" />
+                      </div>
+                    );
+                  })}
               </div>
               <button
                 class="carousel-control-prev"
@@ -140,16 +228,54 @@ function UserProfile() {
             </div>
 
             <div class="col-lg-3 col-md-2 col-xs-12 map">
-                <div class="card user-card">
-                  
-                  <MapContainer lat={data.Latitude} lng={data.Longitude} />
-                  <div class="card-body user-body">
-                    <p class="card-text">{data.addres}</p>
-                    
-                  </div>
+              <div class="card user-card">
+                <MapContainer lat={data.Latitude} lng={data.Longitude} />
+                <div class="card-body user-body">
+                  <p class="card-text">{data.addres}</p>
                 </div>
               </div>
-
+            </div>
+            <br />
+            <div class="col-lg-3 col-md-2 col-xs-12 ">
+              <div class="card selldata user-card">
+                <div class="card-body bg-light user-body">
+                  <h5 class="card-title">Comment Or Email</h5>
+                  <hr />
+                  {/* <p class="card-text sellname">Just Post to {data.YourName}</p> */}
+                 
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">
+                    Hai {Seller.username} Hit Some Msg to {" "}
+                     {data.YourName}
+                    </label>
+                    <textarea
+                      class="form-control"
+                      value={iptText}
+                      name="iptText"
+                      onChange={(e) => {
+                        setIptText(e.target.value);
+                      }}
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                  <button
+                    class="btn btn-info
+                     ml-5"
+                    onClick={() => Notification()}
+                  >
+                   Hit Comment
+                  </button><p>(&)</p>
+                  <button
+                    class="btn btn-info
+                     ml-5"
+                    onClick={() => sendMail()}
+                  >
+                   Hit Mail
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -159,20 +285,5 @@ function UserProfile() {
 
 export default UserProfile;
 
-// RegistrationNumber: "",
-// BikeBrand: "",
-// BikeYear: "",
-// BikeModel: "",
-// KillometerDriven: "",
-// OwnerStatus: "",
-// City: "",
-// inputZip: "",
-// state: "",
-// SellinPrice: "",
-// MobileNumber: "",
-// EmailId: "",
-// YourName: "",
-// Latitude: "",
-// Longitude: "",
-// PhotoSelected: "",
-// addres: "",
+
+

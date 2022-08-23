@@ -3,6 +3,8 @@ import Vehiclecard from "../components/Vehiclecard";
 import "../components/css/card2.css";
 import Carosel from "./Carosel";
 import axios from "axios";
+import Footer from "../components/footer";
+
 
 function Vehicle() {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +13,7 @@ function Vehicle() {
   const getUsers = async () => {
     setIsLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:2580/UserData1/get");
+      const { data } = await axios.get("http://localhost:2580/SellerData/get");
       setIsLoading(false);
       setUser(data);
     } catch (err) {
@@ -92,6 +94,8 @@ function Vehicle() {
             </div>
           </div>
         </div>
+        <br/>
+        <Footer/>
       </div>
     </>
   );

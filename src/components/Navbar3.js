@@ -5,17 +5,16 @@ import { Link } from "react-router-dom";
 function Navbar3() {
  const Logout=()=>{
 window.localStorage.clear("authoraization")
-window.location="/Mainpage"
+window.location.href="/"
  }
 
   return (
     <>
       <div className="container">
         <nav class="navbar navbar-expand-lg navbar-light ">
-          <a class="navbar-brand" href="./MainPage.html">
-            <img className="nav2-logo" src="../image/logo (1).ico" />
-          </a>
-          <Link to="/MainPage" className="nav2-link">
+          <Link to="/"><img className="nav2-logo" src="../image/logo (1).ico" /> </Link>
+         
+          <Link to="/" className="nav2-link">
             <h2 className="nav2-title">vehicle bazzar</h2>
           </Link>
           <button

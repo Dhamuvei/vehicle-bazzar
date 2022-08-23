@@ -4,19 +4,19 @@ import "../components/css/CreateAccount.css";
 import { FaUsers } from "react-icons/fa";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Navigation from "../components/SellerNave";
+import Navigation from "../components/buyerNav2";
 import {toast} from "react-toastify"
 
-function Login(props) {
+function BuyerLogin() {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
     
-    axios.post("http://localhost:2580/Sellerauth/login",data)
+    axios.post("http://localhost:2580/Buyerauth/login",data)
     .then(res=>{
       
       window.localStorage.setItem("authoraization",(res.data))
-      window.location="/SellerMainPg"
+      window.location="/BuyerMainpage"
       toast.success("Login Successfully");
       console.log(res);
     }).catch(err=>{
@@ -32,7 +32,7 @@ function Login(props) {
         <div className="creat-acc-icon"><FaUsers/></div>
 
           <div className="form-header-crearAcc">
-            <p> Seller-Login </p>
+            <p> Buyer-Login </p>
           </div>
 
           <div className="form-group">
@@ -66,7 +66,7 @@ function Login(props) {
             <hr />
             <p className="forgot-password text-right">
               New user need to....
-               <Link style={{textDecorationLine:"none"}} to="/CreaAcc2">CreateAccount</Link>
+               <Link style={{textDecorationLine:"none"}} to="/BuyerCreateAccount">CreateAccount</Link>
             </p>
           </div>
         </form>
@@ -74,4 +74,4 @@ function Login(props) {
     </div>
   );
 }
-export default Login;
+export default BuyerLogin;

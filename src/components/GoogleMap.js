@@ -5,9 +5,7 @@ import { MdLocationOn } from "react-icons/md";
 
 
 
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
-// const AnyReactComponent = ({ text }) => <RoomIcon fontSize="large"/>;
-const AnyReactComponent = ({ text }) => <MdLocationOn/>
+const AnyReactComponent = ({ text }) => <MdLocationOn  size={70}/>
 
 export default function MapContainer({lat,lng}){
   const defaultProps = {

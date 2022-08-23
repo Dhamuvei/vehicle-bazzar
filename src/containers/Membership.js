@@ -1,11 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../components/css/Membership.css";
-import Navigation from "../components/Navigation3";
+import Navigation from "../components/SellerNave";
 import Login from "./Login";
 
 function MemberShip() {
+  const [paymentStatus, setPaymentStatus] = useState('');
   const AuthToken = localStorage.getItem("authoraization");
+  const [amount, setamount] = useState(500);
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    if(amount === ""){
+    alert("please enter amount");
+    }else{
+      var options = {
+        key: "rzp_test_0TbEyizdAyu6ZF",
+        key_secret:"MWAXenR0oTS0kgM3EJTslEIU",
+        amount: amount *100,
+        currency:"INR",
+        name:"Bike Bazzar",
+        description:"for testing purpose",
+        handler: function(response){
+          setPaymentStatus(response.razorpay_payment_id);
+          window.alert("payment sent to BikeBazzar")
+        },
+        prefill: {
+          name:"Dhamodharan.c",
+          email:"dhamoeee2@gmail.com",
+          contact:"7092758683"
+        },
+        notes:{
+          address:"Razorpay Corporate office"
+        },
+        theme: {
+          color:"#3399cc"
+        }
+      };
+      var pay = new window.Razorpay(options);
+      pay.open();
+    }
+  }
   if (!AuthToken) {
     window.alert("Need to Login");
     return (
@@ -32,24 +67,24 @@ function MemberShip() {
                 />
                 <div class="card-img-overlay d-flex flex-column">
                   <div class="card-body memcardbody">
-                    <h3 class="card-title mt-0 mem-title">Free plan</h3>
+                    <h3 class="card-title mt-0 mem-title">Subscribe for following features!</h3>
                     <hr />
-                    <p>Display Untill Sale</p>
+                    <p>Your Ad will be displayed until Sale</p>
                     <br />
-                    <p>Seller Data will secure</p>
+                    <p>Your Data will be secure</p>
                     <br />
-                    <p>Buyer can Contact Directly</p>
-                    <br />
-                    <p>No Payment Free To Post</p>
+                    <p>Buyer will be able to contact seller's Directly</p>
                     <br />
                   </div>
                   <div class="card-footer justify-content-center memfcard">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                      <Link to="/UserData1">
+                      {
+                        (paymentStatus == '') ? <button class="btn btn-danger me-md-2" type="submit" onClick={handleSubmit}>Pay ₹{amount}</button> : <Link to="/UserData1">
                         <button class="btn btn-danger me-md-2" type="submit">
-                          Next
+                          Proceed To upload data!
                         </button>
                       </Link>
+                      }
                     </div>
                   </div>
                 </div>

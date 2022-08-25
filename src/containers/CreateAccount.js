@@ -54,7 +54,7 @@ function Users() {
             const { error } = userSchema.validate(values);
             if (!error) {
               try {
-                const URL = "http://localhost:2580/Sellerauth/register";
+                const URL = "https://bikebazzar.herokuapp.com/Sellerauth/register";
                 // Register api call
                 await axios.post(`${URL}`, values);
                 // send mail to user api call
@@ -62,6 +62,7 @@ function Users() {
                 toast.success("Registration Successfull");
               } catch ({ response: { data } }) {
                 toast.error(data.error);
+
               }
             }
           }}

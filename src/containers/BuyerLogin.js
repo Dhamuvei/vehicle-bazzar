@@ -12,7 +12,7 @@ function BuyerLogin() {
 
   const onSubmit = async (data) => {
     
-    axios.post("http://localhost:2580/Buyerauth/login",data)
+    axios.post("https://bikebazzar.herokuapp.com/Buyerauth/login",data)
     .then(res=>{
       
       window.localStorage.setItem("authoraization",(res.data))
@@ -24,7 +24,7 @@ function BuyerLogin() {
     })
   };
   return (
-    <div className=" container-fluid log-bg">
+    <div className=" container-fluid buy-bg">
           <Navigation/>
 
       <div className="registration-form-ceatAcc ">

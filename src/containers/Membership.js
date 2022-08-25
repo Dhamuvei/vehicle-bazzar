@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "../components/css/Membership.css";
 import Navigation from "../components/SellerNave";
 import Login from "./Login";
+import {toast} from "react-toastify"
+
 
 function MemberShip() {
   const [paymentStatus, setPaymentStatus] = useState('');
@@ -23,7 +25,7 @@ function MemberShip() {
         description:"for testing purpose",
         handler: function(response){
           setPaymentStatus(response.razorpay_payment_id);
-          window.alert("payment sent to BikeBazzar")
+          toast.success("payment sent to BikeBazzar")
         },
         prefill: {
           name:"Dhamodharan.c",
@@ -42,7 +44,7 @@ function MemberShip() {
     }
   }
   if (!AuthToken) {
-    window.alert("Need to Login");
+    toast.error("Need to Login");
     return (
       <>
         <Login />

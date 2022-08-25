@@ -13,7 +13,7 @@ function Vehicle() {
   const getUsers = async () => {
     setIsLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:2580/SellerData/get");
+      const { data } = await axios.get("https://bikebazzar.herokuapp.com/SellerData/get");
       setIsLoading(false);
       setUser(data);
     } catch (err) {

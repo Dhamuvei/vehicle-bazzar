@@ -3,6 +3,8 @@ import "../components/css/UserProfile.css";
 import axios from "axios";
 import Navbar3 from "../components/Navbar3";
 import MapContainer from "../components/GoogleMap";
+import {toast} from "react-toastify"
+
 
 function UserProfile(props) {
   //authToken
@@ -30,14 +32,13 @@ function UserProfile(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [feed, setfeed] = useState([]);
   const [feeds, setfeeds] = useState({});
-  console.log({feeds});
 
   //api to get user data
   const userDataById = async () => {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
-        `http://localhost:2580/SellerData/userId/${userId}`
+        `https://bikebazzar.herokuapp.com/SellerData/userId/${userId}`
       );
       setData(data);
 
@@ -51,10 +52,10 @@ function UserProfile(props) {
   const DeleteUser = async ({ _id }) => {
     if (window.confirm(`Are You Sure ${data.YourName} you Bike got saled`)) {
       try {
-        await axios.delete(`http://localhost:2580/SellerData/delete/${_id}`);
+        await axios.delete(`https://bikebazzar.herokuapp.com/SellerData/delete/${_id}`);
         window.location.href="/UserProfile"
 
-        alert("Deleted Successfully");
+        toast.warn("Deleted Successfully");
         window.location.href="/UserProfile"
       } catch (error) {
         console.log(error.message);
@@ -66,25 +67,24 @@ function UserProfile(props) {
   const feedBackData = async () => {
     try {
       let { data } = await axios.get(
-        `http://localhost:2580/feedback//feedback/${userId}`
+        `https://bikebazzar.herokuapp.com/feedback/feedback/${userId}`
       );
       setfeed(data);
       setfeeds(data);
     } catch (err) {
-      console.log(err.message);
     }
   };
 
 
   const deletefeedback = async (u) => {
+    window.confirm(`Are You Sure you want to Delete ${u.BuyerName}feedback`)
 try {
       await axios.delete(
-        `http://localhost:2580/feedback/deletefeedback/${u._id}`
+        `https://bikebazzar.herokuapp.com/feedback/deletefeedback/${u._id}`
       );
-      alert("Deleted Successfully");
+      toast.success("Deleted Successfully");
     } catch (error) {
       console.log(error.message);
-      alert("feeksjdbhfli")
     }
   };
 

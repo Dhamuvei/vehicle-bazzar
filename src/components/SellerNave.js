@@ -1,8 +1,15 @@
 import React from "react";
 import "../components/css/Navigation2.css"
 import { Link } from "react-router-dom";
+import {toast} from "react-toastify"
+
 
 function Navigation2(){
+    const logout = () => {
+        window.localStorage.clear("authoraization");
+        toast.success("Logged Out SuccesFully");
+        window.location.href = "/";
+      };
     return(
         <>
             <div className="container">
@@ -20,6 +27,7 @@ function Navigation2(){
                     <div class="collapse navbar-collapse justify-content-end " id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <Link class="nav-link active" to="/"><button className="btn btn-outline-dark">Home</button></Link>{" "}
+                            <Link class="nav-link active" to="/"><button className="btn btn-outline-warning"onClick={logout} >Log-Out</button></Link>{" "}
                         </div>
                     </div>
                 </nav>

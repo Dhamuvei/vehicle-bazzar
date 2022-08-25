@@ -46,7 +46,7 @@ function Users() {
 
   return (
     <>
-      <div className="card registration-form-ceatAcc sign-bg">
+      <div className="card registration-form-ceatAcc buy-bg2">
         <Navigation3 />
 
         <div className="card-body">
@@ -58,14 +58,16 @@ function Users() {
               const { error } = userSchema.validate(values);
               if (!error) {
                 try {
-                  const URL = "http://localhost:2580/Buyerauth/register";
+                  const URL = "https://bikebazzar.herokuapp.com/Buyerauth/register";
                   // Register api call
-                  await axios.post(`${URL}`, values);
+                  await axios.post(`${URL}`, values,);
                   // send mail to user api call
                   window.location = "/BuyerLogin";
                   toast.success("Registration Successfull");
-                } catch ({ response: { data } }) {
-                  toast.error(data.error);
+                } catch (err) {
+                  toast.error("Invalid Entry")
+
+                  
                 }
               }
             }}

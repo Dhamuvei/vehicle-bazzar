@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import MapContainer from "../components/GoogleMap";
+import {toast} from "react-toastify"
+
 
 function UserProfile() {
   const { id } = useParams();
@@ -37,7 +39,7 @@ function UserProfile() {
   const Notification = async () => {
  
     try {
-      const url = "http://localhost:2580/feedback/post";
+      const url = "https://bikebazzar.herokuapp.com/feedback/post";
       const responce = await axios.post(url, {
         SellerId: data.userId,
         BuyerName: Seller.username,
@@ -45,8 +47,7 @@ function UserProfile() {
         Byeremail: Seller.email,
         iptText: iptText,
       });
-      window.alert(`Notification Send to ${data.YourName}`);
-      console.log(responce);
+     toast.success(`Notification Send to ${data.YourName}`);
     } catch (err) {}
   };
 
@@ -56,7 +57,7 @@ function UserProfile() {
     setIsLoading(true);
     try {
       const { data } = await axios.get(
-        `http://localhost:2580/BuyerData/getById/${BuyerId}`
+        `https://bikebazzar.herokuapp.com/BuyerData/getById/${BuyerId}`
       );
       setIsLoading(false);
       SellerData(data);
@@ -76,14 +77,12 @@ function UserProfile() {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
-        `http://localhost:2580/SellerData/${id}`
+        `https://bikebazzar.herokuapp.com/SellerData/${id}`
       );
       setData(data);
-      console.log("dhamu",data);
 
       setIsLoading(false);
     } catch (error) {
-      console.log(error.message);
     }
   };
 
@@ -95,21 +94,20 @@ function UserProfile() {
 
   //send mail
   const sendMail = async () => {
-
+    toast.success(`Mail Send to ${data.YourName}`);
     try {
-      const url = "http://localhost:2580/BuyerMail/BuyerMail";
+      const url = "https://bikebazzar.herokuapp.com/BuyerMail/BuyerMail";
       const responce = await axios.post(url, {
         BuyerName: Seller.username,
         BuyerNumber: Seller.number,
         Byeremail: Seller.email,
         sellerName:data.YourName,
         sellerEmail:data.EmailId,
-        iptText: `I Would Like to Buy Ur Bike Sir`,
+        iptText: `Hai ${data.YourName} I Would Like to Buy your ${data.BikeBrand} Bike Sir`,
       }
 
 );
-      window.alert(`Mail Send to ${data.YourName}`);
-      console.log(responce);
+      toast.success(`Mail Send to ${data.YourName}`);
     } catch (err) {}
   };
 

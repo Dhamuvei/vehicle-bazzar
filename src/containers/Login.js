@@ -12,12 +12,13 @@ function Login(props) {
 
   const onSubmit = async (data) => {
     
-    axios.post("http://localhost:2580/Sellerauth/login",data)
+    axios.post("https://bikebazzar.herokuapp.com/Sellerauth/login",data)
     .then(res=>{
       
       window.localStorage.setItem("authoraization",(res.data))
-      window.location="/SellerMainPg"
       toast.success("Login Successfully");
+
+      window.location="/SellerMainPg"
       console.log(res);
     }).catch(err=>{
       toast.error(err.response.data)

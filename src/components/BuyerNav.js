@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import "../components/css/Buyernav.css";
+import {toast} from "react-toastify"
+
+
 
 function BuyerNav() {
   //Get Auth
@@ -23,7 +26,7 @@ function BuyerNav() {
 
   const logout = () => {
     window.localStorage.clear("authoraization");
-    window.alert("Logged Out SuccesFully");
+    toast.success("Logged Out SuccesFully");
     window.location.href = "/";
   };
   return (

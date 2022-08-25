@@ -3,7 +3,7 @@ import "../components/css/UserData1.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Navigation from "../components/SellerNave";
-
+import {toast} from "react-toastify"
 import "../components/css/img.css";
 import "../components/css/UserData2.css";
 import { Link } from "react-router-dom";
@@ -90,7 +90,7 @@ useEffect(() => {
     let deleteImages = [];
     deleteImages = user.PhotoSelected.filter((e) => e !== image);
     setuser({ ...user, PhotoSelected: deleteImages });
-    // setSelectedImages(selectedImages.filter((e) => e !== image));
+
     URL.revokeObjectURL(image);
   }
 
@@ -102,10 +102,9 @@ useEffect(() => {
   const handelsubtmit = async (evt) => {
     evt.preventDefault();
     try {
-      const url = "http://localhost:2580/SellerData/post";
+      const url = "https://bikebazzar.herokuapp.com/SellerData/post";
       const responce = await axios.post(url, user);
-      window.alert(`Account Create SuccesFully`)
-      console.log(responce);
+      toast.success(`Account Create SuccesFully`)
     } catch (err) {}
   };
 

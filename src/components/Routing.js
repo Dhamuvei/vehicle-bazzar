@@ -10,7 +10,6 @@ import CreaAcc2 from "../containers/CreateAccount";
 import BuyerLogin from "../containers/BuyerLogin";
 import UserProfile from "../containers/UserProfile";
 import BuyerCreateAccount from "../containers/BuyerCreateAccount";
-import RozerPay from "../containers/RozerPay";
 import BuyerNav from "./BuyerNav";
 import TandC from "../containers/Terms&Condition";
 import BuyerMainpage from "../containers/BuyerMainPage";
@@ -27,7 +26,6 @@ function Routing() {
       <Route path="/BuyerMainpage" element={<BuyerMainpage />} />
       <Route path="/BuyerNav" element={<BuyerNav />} />
       <Route path="/TandC" element={<TandC />} />
-      <Route path="/RozerPay" element={<RozerPay />} />
       <Route path="/UserProfile" element={<UserProfile />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/CreaAcc2" element={<CreaAcc2 />} />
